@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 180" width="100%" preserveAspectRatio="xMidYMid meet">
+  <defs>
+    <path id="flightPath" d="M30,90 L580,90" fill="none"/>
+  </defs>
+
+  <!-- BAT: flies left to right, wings flap, then fades out -->
+  <g id="bat">
+    <path d="M0,-10
+             C -10,-25 -35,-30 -50,-10
+             C -35,-15 -20,-5 -10,0
+             C -20,10 -25,20 -20,25
+             C -10,15 -5,8 0,10
+             C 5,8 10,15 20,25
+             C 25,20 20,10 10,0
+             C 20,-5 35,-15 50,-10
+             C 35,-30 10,-25 0,-10 Z"
+          fill="#0d0d0d" stroke="#dc2626" stroke-width="1.5">
+      <animateTransform attributeName="transform" type="scale"
+                         values="1 1;1 0.5;1 1;1 0.5;1 1"
+                         keyTimes="0;0.25;0.5;0.75;1"
+                         dur="0.5s" repeatCount="indefinite"/>
+    </path>
+
+    <animateMotion dur="8s" repeatCount="indefinite"
+                   keyPoints="0;1;1" keyTimes="0;0.75;1" calcMode="linear">
+      <mpath href="#flightPath"/>
+    </animateMotion>
+    <animate attributeName="opacity" values="1;1;0" keyTimes="0;0.75;0.85"
+              dur="8s" repeatCount="indefinite"/>
+  </g>
+
+  <!-- PERSON: fades in where the bat lands, holds, then fades out for the loop to restart -->
+  <g id="person" transform="translate(580,90)" opacity="0">
+    <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.75;0.8;0.95;1"
+              dur="8s" repeatCount="indefinite"/>
+    <circle cx="0" cy="-34" r="8" fill="#0d0d0d" stroke="#dc2626" stroke-width="1.5"/>
+    <path d="M-16,-22 L16,-22 L11,14 L-11,14 Z" fill="#0d0d0d" stroke="#dc2626" stroke-width="1.5"/>
+    <path d="M-16,-18 L-22,8" stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M16,-18 L22,8" stroke="#dc2626" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M-9,14 L-11,46" stroke="#dc2626" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M9,14 L11,46" stroke="#dc2626" stroke-width="4" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>
